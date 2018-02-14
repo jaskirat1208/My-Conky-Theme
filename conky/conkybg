@@ -1,0 +1,102 @@
+use_xft yes
+xftfont Inconsolata:pixelsize=12
+#xftfont xft:Inconsolata:size=10:hintstyle=hintfull, -xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1
+xftalpha 0.8
+total_run_times 0
+background yes
+
+cpu_avg_samples 1
+net_avg_samples 2
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 1024
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+
+out_to_console no
+update_interval 10
+alignment top_right
+
+override_utf8_locale yes
+uppercase no
+use_spacer right
+
+
+minimum_size 270 10
+maximum_width 270
+gap_x 30
+gap_y 40
+
+draw_shades no
+draw_outline no
+draw_borders no
+border_width 1
+border_inner_margin 1
+
+default_bar_size 82 3
+stippled_borders 3
+
+default_color FFFFFF
+default_shade_color 333333
+default_outline_color 000000
+
+short_units yes
+pad_percents 2
+
+# Lua Script
+lua_load ~/.i3/clock.lua
+lua_draw_hook_pre clock_rings
+
+color1 4ca0be
+color2 00ffff
+
+TEXT
+${offset 56}${voffset 3}${cpugraph cpu6 17,1}${voffset -1}${cpugraph cpu1 0,50}
+${voffset -30}${offset 110}${font Digital\-7:size=12}${time %H:%M:%S}${font}${alignr}
+${voffset -5}${offset 110}${hr}${voffset 2}
+${font Nimbus Mono L:size=9}${voffset -15}
+${execp cal | cat -e|  sed 's/\$/ /g ;s/_^H./\${color2}'"$(date +%e)"'${color}/1; s/_^H.//g; s/^/\${goto 120}/g'} ${voffset -84}
+
+${color1}${voffset 73}${offset 56}${stippled_hr}${voffset -27}
+${voffset 0}${offset 56}${cpugraph cpu6 17,1}${color1}
+
+${voffset -45}${color1}
+# ${goto 340}${font Conky Icons by Carelli:size=30}${font Radio Space:size=30}${time %H:%M}${distribution}
+# ${goto 260}${hr 2}
+# ${goto 265}${font Conky Icons by Carelli:size=14}${goto 290}${font Radio Space:size=9}${voffset -7}${color}${font size=14}${alignr}${distribution} ${kernel}
+# ${goto 15}${font Conky Icons by Carelli:size=14}Ƃ${goto 40}${font}Up Speed: ${upspeed wlo1}${goto 180}${upspeedgraph  wlo1 20,80 DD3A21 DD3A21}${voffset -7}${goto 265}${font Conky Icons by Carelli:size=14}Ƃ${font}${goto 290}Up Speed: ${upspeed enp37s0}${goto 433}${upspeedgraph  enp37s0 20,80 DD3A21 DD3A21}${font}${color}
+# ${goto 15}${font Conky Icons by Carelli:size=14}Ɓ${font}${goto 40}Down Speed: ${downspeed wlo1}${goto 180}${downspeedgraph wlo1 20,80 DD3A21 DD3A21}${voffset -7}${goto 265}${font Conky Icons by Carelli:size=14}Ɓ${font}${goto 290}Down Speed: ${downspeed enp37s0}${goto 433}${downspeedgraph  enp37s0 20,80 DD3A21 DD3A21}
+# ${goto 15}${font Conky Icons by Carelli:size=14}h${font}${goto 40}IP: ${addrs wlo1}${goto 265}${voffset -7}${font Conky Icons by Carelli:size=14}h${goto 290}${font}IP: ${addrs enp37s0}${goto 530}${font Conky Icons by Carelli:size=14}h${font}Public IP: ${exec curl ipinfo.io/ip}
+# ${voffset 13}${goto 15}${font Conky Icons by Carelli:size=14}Ǘ${font} SSID: ${wireless_essid wlo1} : ${wireless_link_qual wlo1}%
+${voffset 10}${goto 15}${color #F8DF58}${font Conky Icons by Carelli:size=14}${goto 0}${font Radio Space:size=9}PROCESSES${voffset -7}${goto 10}${font Conky Icons by Carelli:size=14}${color}${font}
+${voffset 5}${font Ubuntu:Bold:size=10}${goto 0}Name ${goto 130}PID${goto 185}CPU%${goto 240}MEM%${voffset -7}${font}
+${voffset 5}${goto 0}${top name 1} ${goto 130}${top pid 1}${goto 185}${top cpu 1}${goto 240}${top mem 1}${font}
+${voffset 5}${goto 0}${top name 2} ${goto 130}${top pid 2}${goto 185}${top cpu 2}${goto 240}${top mem 2}${voffset -7}${goto 400}${font Conky Icons by Carelli:size=14}${font}
+${goto 0}${top name 3} ${goto 130}${top pid 3}${goto 185}${top cpu 3}${goto 240}${top mem 3}
+${goto 0}${top name 4} ${goto 130}${top pid 4}${goto 185}${top cpu 4}${goto 240}${top mem 4}
+${goto 0}${top name 5} ${goto 130}${top pid 5}${goto 185}${top cpu 5}${goto 240}${top mem 5}
+${goto 0}${top name 6} ${goto 130}${top pid 6}${goto 185}${top cpu 6}${goto 240}${top mem 6}${font}
+${goto 0}${top name 7} ${goto 130}${top pid 7}${goto 185}${top cpu 7}${goto 240}${top mem 7}
+${goto 0}${top name 8} ${goto 130}${top pid 8}${goto 185}${top cpu 8}${goto 240}${top mem 8}
+${goto 0}${top name 9} ${goto 130}${top pid 9}${goto 185}${top cpu 9}${goto 240}${top mem 9}
+${goto 0}${top name 10} ${goto 130}${top pid 10}${goto 185}${top cpu 10}${goto 240}${top mem 10}
+# DISC
+# ------------------------------------------------------------------------------------------------------------------------------
+${voffset 10}${goto 0}${font Radio Space:size=9}${color #F8DF58}DISC${color}
+${goto 0}${font Conky Icons by Carelli:size=14}ǘ${font}${goto 240}${acpitemp} ºC
+${goto 0}Root:${goto 80}${fs_bar 7,80 /}${goto 210}${fs_free /} / ${fs_size /}
+${goto 0}Dados:${goto 80}${fs_bar 7,80 /mnt/Dados}${goto 170}${fs_free /mnt/Dados} / ${fs_size /mnt/Dados}
+${goto 0}Dados:${goto 80}${fs_bar 7,80 /mnt/Dados}${goto 170}${fs_free /mnt/Dados} / ${fs_size /mnt/Dados}
+
+# CPU
+# ------------------------------------------------------------------------------------------------------------------------------
+${voffset 10}${goto 0}${font Radio Space:size=9}${color #F8DF58}CPU${color}
+${goto 0}CPU0: ${goto 80}${cpubar 7,80 cpu0}${goto 240}${cpu cpu0}%
+${goto 0}CPU1: ${goto 80}${cpubar 7,80 cpu1}${goto 240}${cpu cpu0}%
+${goto 0}CPU2: ${goto 80}${cpubar 7,80 cpu2}${goto 240}${cpu cpu0}%
+${goto 0}CPU3: ${goto 80}${cpubar 7,80 cpu3}${goto 240}${cpu cpu0}%
+${goto 0}RAM:${goto 644}${goto 80}${membar 7,80}${goto 240}$memperc% 
+${goto 0}SWAP:${goto 644}${goto 80}${swapbar 7,80}${goto 240}$swapperc%
